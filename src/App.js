@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import AccountCreation from "./AccountCreation";
-import Deposit from "./Deposit";
-import Withdraw from "./Withdraw";
-import TransferFunds from "./Transfer";
-import Balance from "./AccountBalance";
+import AccountCreation from "./components/AccountCreation";
+import Deposit from "./components/Deposit";
+import Withdraw from "./components/Withdraw";
+import TransferFunds from "./components/Transfer";
+import Balance from "./components/AccountBalance";
+import "./cssFiles/App.css";
 
 function App() {
   const [activeComponent, setActiveComponent] = useState("home");
@@ -32,8 +33,7 @@ function App() {
       break;
     default:
       componentToRender = (
-        <div>
-          <h1>Welcome to Archer Banking</h1>
+        <div className="homeComponent">
           <button onClick={() => switchComponent("AccountCreation")}>
             Create Account
           </button>
@@ -48,7 +48,16 @@ function App() {
         </div>
       );
   }
-  return <div className="App">{componentToRender}</div>;
+  return (
+    <div className="App">
+      <header>
+        <h1>Welcome to Archer Banking</h1>
+      </header>
+      <div className="container">
+        <div className="component">{componentToRender}</div>
+      </div>
+    </div>
+  );
 }
 
 export default App;
