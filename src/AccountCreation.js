@@ -1,27 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 
 function AccountCreation({ switchComponent }) {
-  //   const [accountName, setAccountName] = useState("");
-  //   const [accountBalance, setAccountBalance] = useState(0);
-  //   const [holderName, setHolderName] = useState("");
+  const [accountName, setAccountName] = useState("");
+  const [isChecking, setIsChecking] = useState(false);
+  const [isSavings, setIsSavings] = useState(false);
+  const [accounts, setAccounts] = useState([]);
+
+  const handleConfirm = () => {
+    const account = {
+      name: accountName,
+      type: isChecking ? "Checking" : isSavings ? "Savings" : "",
+      balance: 0,
+    };
+
+    setAccounts([...accounts, account]);
+
+    switchComponent("home");
+  };
 
   return (
     <div>
       <button onClick={() => switchComponent("home")}>X</button>
       <div>
         <label>Account Name</label>
-        <input type="text" />
+        <input
+          type="text"
+          value={accountName}
+          onChange={(e) => setAccountName(e.target.value)}
+        />
       </div>
       <div>
         <label>Account Type</label>
         <div>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            checked={isChecking}
+            onChange={() => setIsChecking(!isChecking)}
+          />
           Checking
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            checked={isSavings}
+            onChange={() => setIsSavings(!isSavings)}
+          />
           Savings
         </div>
       </div>
-      <button>Confirm</button>
+      <button onClick={handleConfirm}>Confirm</button>
     </div>
   );
 }
