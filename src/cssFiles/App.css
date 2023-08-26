@@ -6,6 +6,9 @@
 
 header {
   text-align: center;
+  padding-top: 25px;
+  font-size: xx-large;
+  color: white;
 }
 
 body {
@@ -23,24 +26,28 @@ body {
 }
 
 .component {
+  margin-top: 10%;
   display: flex;
   justify-content: center;
   padding: 10px;
-  width: 30vw;
+  width: 40vw;
   height: 35vh;
-  background-color: rgba(0, 0, 0, 0.486);
 }
 .homeComponent {
   display: flex;
   width: 100%;
   height: 100%;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   align-items: center;
 }
 
 .homeComponent > button {
-  width: 90%;
-  height: 20%;
-  margin: 10px;
+  width: 250px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.37);
+  font-size: x-large;
+  font-weight: bold;
+  border-radius: 10px;
+  color: white;
 }
