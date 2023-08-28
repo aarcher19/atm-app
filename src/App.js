@@ -4,10 +4,15 @@ import Deposit from "./components/Deposit";
 import Withdraw from "./components/Withdraw";
 import TransferFunds from "./components/Transfer";
 import Balance from "./components/AccountBalance";
-import "./cssFiles/App.css";
+import "./App.css";
 
 function App() {
   const [activeComponent, setActiveComponent] = useState("home");
+  const [accountList, setAccountList] = useState([]);
+
+  const addAccount = (newAccount) => {
+    setAccountList([...accountList, newAccount]);
+  };
 
   const switchComponent = (componentName) => {
     setActiveComponent(componentName);
@@ -17,19 +22,44 @@ function App() {
 
   switch (activeComponent) {
     case "AccountCreation":
-      componentToRender = <AccountCreation switchComponent={switchComponent} />;
+      componentToRender = (
+        <AccountCreation
+          switchComponent={switchComponent}
+          addAccount={addAccount}
+        />
+      );
       break;
     case "Deposit":
-      componentToRender = <Deposit switchComponent={switchComponent} />;
+      componentToRender = (
+        <Deposit
+          switchComponent={switchComponent}
+          addAccount={addAccount}
+          accountList={accountList}
+        />
+      );
       break;
     case "Withdraw":
-      componentToRender = <Withdraw switchComponent={switchComponent} />;
+      componentToRender = (
+        <Withdraw
+          switchComponent={switchComponent}
+          addAccount={addAccount}
+          accountList={accountList}
+        />
+      );
       break;
     case "TransferFunds":
-      componentToRender = <TransferFunds switchComponent={switchComponent} />;
+      componentToRender = (
+        <TransferFunds
+          switchComponent={switchComponent}
+          addAccount={addAccount}
+          accountList={accountList}
+        />
+      );
       break;
     case "Balance":
-      componentToRender = <Balance switchComponent={switchComponent} />;
+      componentToRender = (
+        <Balance switchComponent={switchComponent} accountList={accountList} />
+      );
       break;
     default:
       componentToRender = (
@@ -54,7 +84,7 @@ function App() {
         <h1>Welcome to Archer Banking</h1>
       </header>
       <div className="container">
-        <div className="component">{componentToRender}</div>
+        <div className="componentContainer">{componentToRender}</div>
       </div>
     </div>
   );

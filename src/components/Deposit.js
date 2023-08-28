@@ -1,18 +1,21 @@
 import React from "react";
+import "./Component.css";
+import SelectAccount from "./SelectAccount";
 
-function Deposit({ switchComponent }) {
+function Deposit({ switchComponent, accountList }) {
   return (
-    <div>
-      <button onClick={() => switchComponent("home")}>X</button>
-      <div>
-        <label>Select Account</label>
-        <input />
+    <div className="component">
+      <button className="backButton" onClick={() => switchComponent("home")}>
+        ⇦
+      </button>
+      <div className="data">
+        <SelectAccount accountList={accountList} />
+        <div>
+          <label>Enter Ammount</label>
+          <input type="number" />
+        </div>
+        <button className="confirm">Confirm</button>
       </div>
-      <div>
-        <label>Enter Ammount</label>
-        <input />
-      </div>
-      <button>Confirm</button>
     </div>
   );
 }

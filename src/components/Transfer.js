@@ -1,22 +1,25 @@
 import React from "react";
+import SelectAccount from "./SelectAccount";
 
-function TransferFunds({ switchComponent }) {
+function TransferFunds({ switchComponent, accountList }) {
   return (
-    <div>
-      <button onClick={() => switchComponent("home")}>X</button>
-      <div>
-        <label>Account From</label>
-        <input />
+    <div className="component">
+      <button className="backButton" onClick={() => switchComponent("home")}>
+        ⇦
+      </button>
+      <div className="data">
+        <div>
+          <SelectAccount accountList={accountList} />
+        </div>
+        <div>
+          <SelectAccount accountList={accountList} />
+        </div>
+        <div>
+          <label>Amount</label>
+          <input />
+        </div>
+        <button className="confirm">Confirm</button>
       </div>
-      <div>
-        <label>Account To</label>
-        <input />
-      </div>
-      <div>
-        <label>Amount</label>
-        <input />
-      </div>
-      <button>Confirm</button>
     </div>
   );
 }

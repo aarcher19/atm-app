@@ -1,14 +1,19 @@
 import React from "react";
+import SelectAccount from "./SelectAccount";
 
-function Balance({ switchComponent }) {
+function Balance({ switchComponent, accountList }) {
   return (
-    <div>
-      <button onClick={() => switchComponent("home")}>X</button>
-      <div>
-        <label>Select Account</label>
-        <input />
+    <div className="component">
+      <button className="backButton" onClick={() => switchComponent("home")}>
+        ⇦
+      </button>
+      <div className="data">
+        <div>
+          <SelectAccount accountList={accountList} />
+        </div>
+        <div>{/* <DisplayBalance /> */}</div>
+        <button className="confirm">Get Balance</button>
       </div>
-      <div>{/* <DisplayBalance /> */}</div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import "./Component.css";
 
-function AccountCreation({ switchComponent }) {
+function AccountCreation({ switchComponent, addAccount }) {
   const [accountName, setAccountName] = useState("");
   const [isChecking, setIsChecking] = useState(false);
   const [isSavings, setIsSavings] = useState(false);
@@ -15,38 +16,51 @@ function AccountCreation({ switchComponent }) {
 
     setAccounts([...accounts, account]);
 
+    addAccount(accountName);
+    setAccountName("");
+
     switchComponent("home");
   };
 
   return (
-    <div>
-      <button onClick={() => switchComponent("home")}>X</button>
-      <div>
-        <label>Account Name</label>
-        <input
-          type="text"
-          value={accountName}
-          onChange={(e) => setAccountName(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Account Type</label>
+    <div className="component">
+      <button className="backButton" onClick={() => switchComponent("home")}>
+        ⇦
+      </button>
+      <div className="data">
         <div>
+          <label>Account Name</label>
           <input
-            type="checkbox"
-            checked={isChecking}
-            onChange={() => setIsChecking(!isChecking)}
+            type="text"
+            value={accountName}
+            onChange={(e) => setAccountName(e.target.value)}
           />
-          Checking
-          <input
-            type="checkbox"
-            checked={isSavings}
-            onChange={() => setIsSavings(!isSavings)}
-          />
-          Savings
         </div>
+        <div>
+          <label>Account Type</label>
+          <div className="balanceDataContainer">
+            <div className="balanceData">
+              <h1>Checking</h1>
+              <input
+                type="checkbox"
+                checked={isChecking}
+                onChange={() => setIsChecking(!isChecking)}
+              />
+            </div>
+            <div className="balanceData">
+              <h1>Savings</h1>
+              <input
+                type="checkbox"
+                checked={isSavings}
+                onChange={() => setIsSavings(!isSavings)}
+              />
+            </div>
+          </div>
+        </div>
+        <button className="confirm" onClick={handleConfirm}>
+          Confirm
+        </button>
       </div>
-      <button onClick={handleConfirm}>Confirm</button>
     </div>
   );
 }
