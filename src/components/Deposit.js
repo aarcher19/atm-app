@@ -1,6 +1,7 @@
 import React from "react";
 import "./Component.css";
 import SelectAccount from "./SelectAccount";
+import CurrencyInput from "react-currency-input-field";
 
 function Deposit({ switchComponent, accountList }) {
   return (
@@ -12,7 +13,14 @@ function Deposit({ switchComponent, accountList }) {
         <SelectAccount accountList={accountList} />
         <div>
           <label>Enter Ammount</label>
-          <input type="number" />
+          <CurrencyInput
+            id="input-field"
+            name="deposit-input"
+            placeholder="$1,000"
+            decimalScale={2}
+            decimalsLimit={2}
+            prefix="$"
+          />
         </div>
         <button className="confirm">Confirm</button>
       </div>

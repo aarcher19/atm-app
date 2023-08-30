@@ -1,5 +1,6 @@
 import React from "react";
 import SelectAccount from "./SelectAccount";
+import CurrencyInput from "react-currency-input-field";
 
 function TransferFunds({ switchComponent, accountList }) {
   return (
@@ -16,7 +17,15 @@ function TransferFunds({ switchComponent, accountList }) {
         </div>
         <div>
           <label>Amount</label>
-          <input />
+          <CurrencyInput
+            className="transferInput"
+            id="input-field"
+            name="deposit-input"
+            placeholder="$1,000"
+            decimalScale={2}
+            decimalsLimit={2}
+            prefix="$"
+          />
         </div>
         <button className="confirm">Confirm</button>
       </div>

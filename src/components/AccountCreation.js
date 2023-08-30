@@ -34,6 +34,7 @@ function AccountCreation({ switchComponent, addAccount }) {
             type="text"
             value={accountName}
             onChange={(e) => setAccountName(e.target.value)}
+            placeholder="Ex. Checking 01..."
           />
         </div>
         <div>
